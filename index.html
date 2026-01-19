@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move It - OKR Master 2126</title>
+    <meta name="description" content="Gestión de OKRs con visión centenaria">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+        }
+        body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; background: var(--light); color: var(--dark); }
+        header { background: var(--dark); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: white; margin-left: 1rem; text-decoration: none; font-weight: bold; }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        .okr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .kr { border-left: 4px solid var(--primary); padding-left: 1rem; margin-top: 0.5rem; font-size: 0.9rem; }
+        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #64748b; border-top: 1px solid #ddd; }
+        input, button { padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc; }
+        .btn { background: var(--primary); color: white; border: none; cursor: pointer; padding: 0.7rem 1.2rem; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🚀 Move It OKRs</div>
+    <nav>
+        <a href="#dashboard" onclick="showPage('dashboard')">Panel</a>
+        <a href="#tips" onclick="showPage('tips')">Tips</a>
+        <a href="#about" onclick="showPage('about')">Sobre Mí</a>
+        <button class="btn" id="auth-btn" data-netlify-identity-button>Cargando...</button>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="dashboard">
+        <h1>Mis Objetivos Anuales</h1>
+        <div id="okr-list" class="okr-grid">
+            <div class="card">
+                <h3>O1: [Tu Objetivo Aquí]</h3>
+                <div class="kr"><strong>KR1:</strong> Métrica de éxito cuantificable.</div>
+                <div class="kr"><strong>KR2:</strong> Métrica de éxito cuantificable.</div>
+                <div class="kr"><strong>KR3:</strong> Métrica de éxito cuantificable.</div>
+            </div>
+            </div>
+    </section>
+
+    <section id="tips" class="hidden">
+        <h2>Guía para Escribir OKRs Maestros</h2>
+        <div class="card">
+            <h3>1. El Objetivo (¿Hacia dónde vamos?)</h3>
+            <p>Debe ser inspirador y cualitativo. No uses números aquí. <br><em>Ejemplo: "Dominar el mercado de transporte en Wonder City".</em></p>
+            
+            <h3>2. El Resultado Clave (¿Cómo sabemos que llegamos?)</h3>
+            <ul>
+                <li><strong>Medible:</strong> Si no tiene un número, es una tarea, no un KR.</li>
+                <li><strong>Ambicioso:</strong> Un KR debería ser alcanzable en un 70-80%. Si llegas al 100% fácil, era poco ambicioso.</li>
+                <li><strong>Basado en Valor:</strong> No pongas "Hacer una app", pon "Lograr 10,000 usuarios activos".</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="about" class="hidden">
+        <h2>Sobre el Creador</h2>
+        <div class="card">
+            <p>Soy un estratega de proyectos enfocado en transformar la movilidad urbana. Mi visión es crear sistemas que perduren y faciliten la vida de los ciudadanos.</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Move It Project. Todos los derechos reservados.</p>
+    <p>
+        <a href="#legal">Aviso Legal</a> | 
+        <a href="#privacy">Política de Privacidad</a> | 
+        <a href="#cookies">Cookies</a>
+    </p>
+</footer>
+
+<script>
+    // Lógica simple para cambiar de sección
+    function showPage(pageId) {
+        document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    // Integración con Netlify Identity
+    netlifyIdentity.on('init', user => {
+        if (!user) {
+            console.log('No hay usuario logueado');
+        }
+    });
+
+    netlifyIdentity.on('login', user => {
+        netlifyIdentity.close();
+        location.reload();
+    });
+</script>
+
+</body>
+</html>
