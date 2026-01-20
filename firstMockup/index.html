@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Agenda Semanal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1em;
+            width: 100%;
+            text-align: center;
+        }
+        .kanban-week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            width: 95%;
+            margin: 20px auto;
+        }
+        .day-column {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .day-column h2 {
+            text-align: center;
+            color: #333;
+        }
+        .task-section {
+            margin-top: 10px;
+        }
+        .task-section h3 {
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .task {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: grab;
+        }
+        .task:active {
+            cursor: grabbing;
+        }
+        .add-task {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .add-task button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-task button:hover {
+            background-color: #0056b3;
+        }
+        .backlog {
+            background: #f8f9fa;
+            border: 1px dashed #007bff;
+            border-radius: 8px;
+            width: 95%;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .backlog h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kanban Agenda Semanal</h1>
+        <p>Organiza tus tareas diarias de forma eficiente</p>
+    </header>
+
+    <div class="backlog" id="backlog">
+        <h2>Backlog General</h2>
+        <div class="task" draggable="true">Como usuario, debo planificar mi semana para lograr mayor productividad</div>
+        <div class="task" draggable="true">Como estudiante, debo estudiar 2 horas diarias para aprobar mis exámenes</div>
+        <div class="add-task">
+            <button onclick="addTask('backlog')">+ Añadir Tarea</button>
+        </div>
+    </div>
+
+    <div class="kanban-week">
+        <!-- Columns for each day of the week -->
+        <div class="day-column" id="monday">
+            <h2>Lunes</h2>
+            <div class="task-section" id="monday-todo">
+                <h3>To-Do</h3>
+                <div class="add-task">
+                    <button onclick="addTask('monday-todo')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="monday-doing">
+                <h3>Doing</h3>
+                <div class="add-task">
+                    <button onclick="addTask('monday-doing')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="monday-done">
+                <h3>Done</h3>
+                <div class="add-task">
+                    <button onclick="addTask('monday-done')">+ Añadir Tarea</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat for other days -->
+        <div class="day-column" id="tuesday">
+            <h2>Martes</h2>
+            <div class="task-section" id="tuesday-todo">
+                <h3>To-Do</h3>
+                <div class="add-task">
+                    <button onclick="addTask('tuesday-todo')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="tuesday-doing">
+                <h3>Doing</h3>
+                <div class="add-task">
+                    <button onclick="addTask('tuesday-doing')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="tuesday-done">
+                <h3>Done</h3>
+                <div class="add-task">
+                    <button onclick="addTask('tuesday-done')">+ Añadir Tarea</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat for remaining days -->
+        <div class="day-column" id="wednesday">
+            <h2>Miércoles</h2>
+            <div class="task-section" id="wednesday-todo">
+                <h3>To-Do</h3>
+                <div class="add-task">
+                    <button onclick="addTask('wednesday-todo')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="wednesday-doing">
+                <h3>Doing</h3>
+                <div class="add-task">
+                    <button onclick="addTask('wednesday-doing')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="wednesday-done">
+                <h3>Done</h3>
+                <div class="add-task">
+                    <button onclick="addTask('wednesday-done')">+ Añadir Tarea</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-column" id="thursday">
+            <h2>Jueves</h2>
+            <div class="task-section" id="thursday-todo">
+                <h3>To-Do</h3>
+                <div class="add-task">
+                    <button onclick="addTask('thursday-todo')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="thursday-doing">
+                <h3>Doing</h3>
+                <div class="add-task">
+                    <button onclick="addTask('thursday-doing')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="thursday-done">
+                <h3>Done</h3>
+                <div class="add-task">
+                    <button onclick="addTask('thursday-done')">+ Añadir Tarea</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-column" id="friday">
+            <h2>Viernes</h2>
+            <div class="task-section" id="friday-todo">
+                <h3>To-Do</h3>
+                <div class="add-task">
+                    <button onclick="addTask('friday-todo')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="friday-doing">
+                <h3>Doing</h3>
+                <div class="add-task">
+                    <button onclick="addTask('friday-doing')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="friday-done">
+                <h3>Done</h3>
+                <div class="add-task">
+                    <button onclick="addTask('friday-done')">+ Añadir Tarea</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-column" id="saturday">
+            <h2>Sábado</h2>
+            <div class="task-section" id="saturday-todo">
+                <h3>To-Do</h3>
+                <div class="add-task">
+                    <button onclick="addTask('saturday-todo')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="saturday-doing">
+                <h3>Doing</h3>
+                <div class="add-task">
+                    <button onclick="addTask('saturday-doing')">+ Añadir Tarea</button>
+                </div>
+            </div>
+            <div class="task-section" id="saturday-done">
+                <h3>Done</h3>
+                <div class="add-task">
+                    <button onclick="addTask('saturday-done')">+ Añadir Tarea</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+        // JavaScript para gestionar las tareas del lunes
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a las secciones del lunes
+    const todoSection = document.getElementById('monday-todo');
+    const doingSection = document.getElementById('monday-doing');
+    const doneSection = document.getElementById('monday-done');
+
+    // Función para añadir una nueva tarea
+    window.addTask = (sectionId) => {
+        const taskText = prompt("Describe la tarea en formato 'Como ..., debo ..., para lograr ...':");
+        if (taskText) {
+            const task = document.createElement('div');
+            task.className = 'task';
+            task.draggable = true;
+            task.textContent = taskText;
+
+            // Añadir eventos drag & drop a la tarea
+            task.addEventListener('dragstart', dragStart);
+            task.addEventListener('dragend', dragEnd);
+
+            document.getElementById(sectionId).appendChild(task);
+        }
+    };
+
+    // Función para manejar el inicio del arrastre
+    function dragStart(e) {
+        e.dataTransfer.setData('text/plain', e.target.id);
+        setTimeout(() => {
+            e.target.style.display = 'none';
+        }, 0);
+    }
+
+    // Función para manejar el final del arrastre
+    function dragEnd(e) {
+        e.target.style.display = 'block';
+    }
+
+    // Función para permitir soltar tareas en secciones
+    function allowDrop(e) {
+        e.preventDefault();
+    }
+
+    // Función para manejar el drop de tareas
+    function handleDrop(e) {
+        e.preventDefault();
+        const taskId = e.dataTransfer.getData('text/plain');
+        const task = document.getElementById(taskId);
+        e.target.appendChild(task);
+    }
+
+    // Añadir eventos drag & drop a las secciones
+    [todoSection, doingSection, doneSection].forEach(section => {
+        section.addEventListener('dragover', allowDrop);
+        section.addEventListener('drop', handleDrop);
+    });
+});
+</script>
+</body>
