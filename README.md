@@ -54,10 +54,11 @@ A continuación, un fragmento de cómo están organizados los días en el HTML:
 - **Agregar diseño a los mensajes de entrada**: Que los mensajes utilicen una libreria propia en javascript.
 - **Mejoras en la pagina inicial**: Agregar barra de busqueda, accesibilidad y diseño UI.
 
-## Contribuciones
+## Contribuir
 
 ¡Las contribuciones son bienvenidas! Si tienes una idea o encuentras un problema, por favor abre un issue o envía un pull request.
-Licencia
+
+## Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 Contacto
@@ -65,7 +66,7 @@ Contacto
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
 
 
-# Not To Do List
+## Not To Do List
 
 ## Descripción del Proyecto
 
