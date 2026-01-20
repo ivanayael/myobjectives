@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist Para Tener un Buen Dia, Mes y Año!!!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #FF6859;
+      text-align: center;
+    }
+
+    .section {
+      border: 2px solid #FF6859;
+      border-radius: 10px;
+      margin: 20px 0;
+      padding: 15px;
+    }
+
+    h2 {
+      color: #FF6859;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .btn {
+      background-color: #FF6859;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #e45b4f;
+    }
+
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 5px;
+      margin-right: 10px;
+    }
+
+    .input-group {
+      display: flex;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Checklist para Tener un Buen Dia, Mes y Año!!</h1>
+
+  <!-- DAILY -->
+  <div class="section" id="daily-section">
+    <h2>🗓️ Daily</h2>
+    <ul id="daily-list">
+      <li><input type="checkbox" title="Saluda a la gente">Saluda a la gente</li>
+      <li><input type="checkbox" title="Piensa que a pesar de los problemas, puedes darle una sonrisa a alguien">Piensa que a pesar de los problemas, puedes darle una sonrisa a alguien</li>
+      <li><input type="checkbox" title="Todo puede mejorar hoy">Todo puede mejorar hoy</li>
+      <li><input type="checkbox" title="Sigue Avanzando">Sigue Avanzando</li>
+      <li><input type="checkbox" title="Usa las herramientas que tienes y aprende nuevas">Usa las herramientas que tienes y aprende nuevas</li>
+      <li><input type="checkbox" title="Usa tu tiempo sabiamente">Usa tu tiempo sabiamente</li>
+      <li><input type="checkbox" title="Nada es tan importante como parece, salvo vivir la vida que tienes">Nada es tan importante como parece, salvo vivir la vida que tienes</li>
+      <li><input type="checkbox" title="Nada es perfecto">Nada es perfecto</li>
+      <li><input type="checkbox" title="Nada es tan claro al principio">Nada es tan claro al principio</li>
+      <li><input type="checkbox" title="Busca quien te ayude a continuar">Busca quien te ayude a continuar</li>
+      <li><input type="checkbox" title="Sòlo sigue adelante">Sòlo sigue adelante</li>
+    </ul>
+    <div class="input-group">
+      <input type="text" id="daily-new-item" placeholder="Nuevo ítem...">
+      <button class="btn" onclick="addItem('daily')">Agregar</button>
+    </div>
+  </div>
+
+  <!-- WEEKLY -->
+  <div class="section" id="weekly-section">
+    <h2>📅 Weekly</h2>
+    <ul id="weekly-list">
+      <li><input type="checkbox" title="Lo lograste!">Lo lograste!</li>
+      <li><input type="checkbox" title="Te felicito">Te felicito</li>
+      <li><input type="checkbox" title="Puedes volver mas tarde">Puedes volver mas tarde</li>
+      <li><input type="checkbox" title="No te preocupes por el mañana, disfruta el hoy">No te preocupes por el mañana, disfruta el hoy</li>
+      <li><input type="checkbox" title="El mundo espera por tí">El mundo espera por tí</li>
+    </ul>
+    <div class="input-group">
+      <input type="text" id="weekly-new-item" placeholder="Nuevo ítem...">
+      <button class="btn" onclick="addItem('weekly')">Agregar</button>
+    </div>
+  </div>
+
+  <!-- MENSUAL -->
+  <div class="section" id="monthly-section">
+    <h2>📆 Mensual</h2>
+    <ul id="monthly-list">
+      <li><input type="checkbox">Se termino el mes!!!</li>
+      <li><input type="checkbox">Celebremos!!!</li>
+      <li><input type="checkbox">Si tienes un empleo ya te pagan!!</li>
+      <li><input type="checkbox">Que vamos a hacer mañana?</li>
+      <li><input type="checkbox">Esta bien si vamos juntos?</li>
+    </ul>
+    <div class="input-group">
+      <input type="text" id="monthly-new-item" placeholder="Nuevo ítem...">
+      <button class="btn" onclick="addItem('monthly')">Agregar</button>
+    </div>
+  </div>
+
+  <script>
+    function addItem(type) {
+      const input = document.getElementById(`${type}-new-item`);
+      const list = document.getElementById(`${type}-list`);
+      const value = input.value.trim();
+      if (value !== '') {
+        const li = document.createElement('li');
+        li.innerHTML = `<input type="checkbox">${value}`;
+        list.appendChild(li);
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
