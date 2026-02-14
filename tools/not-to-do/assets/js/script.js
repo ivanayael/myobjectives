@@ -1,23 +1,18 @@
-const form = document.getElementById('notToDoForm');
-const taskInput = document.getElementById('taskInput');
-const taskList = document.getElementById('taskList');
+document.getElementById('notToDoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const input = document.getElementById('taskInput');
+    const newTask = input.value;
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const taskText = taskInput.value.trim();
-    if (taskText === '') return;
-
-    const li = document.createElement('li');
-    li.textContent = taskText;
-
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'X';
-    deleteButton.className = 'delete';
-    deleteButton.onclick = () => li.remove();
-
-    li.appendChild(deleteButton);
-    taskList.appendChild(li);
-
-    taskInput.value = '';
+    if (newTask) {
+        const li = document.createElement('li');
+        li.className = 'permanent';
+        li.textContent = newTask;
+        
+        // Efecto visual de "alerta" al agregar
+        li.style.borderColor = '#38bdf8'; 
+        
+        document.getElementById('taskList').prepend(li);
+        input.value = '';
+    }
 });
+
